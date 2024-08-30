@@ -45,7 +45,7 @@ if SETUPTOOLS_COMMANDS.intersection(sys.argv):
         include_package_data=True,
         extras_require={
             'alldeps': (
-                'numpy >= {0}'.format(NUMPY_MIN_VERSION),
+                'numpy == {0}'.format(NUMPY_MIN_VERSION),
             ),
         },
     )
@@ -127,7 +127,7 @@ def get_numpy_status():
         import numpy
         numpy_version = numpy.__version__
         numpy_status['up_to_date'] = parse_version(
-            numpy_version) >= parse_version(NUMPY_MIN_VERSION)
+            numpy_version) == parse_version(NUMPY_MIN_VERSION)
         numpy_status['version'] = numpy_version
     except ImportError:
         traceback.print_exc()
